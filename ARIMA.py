@@ -21,19 +21,19 @@ class Config:
     
     # --- Data Loading ---
     RESAMPLE_PERIOD = 'D' # 'D' for Daily, 'H' for Hourly, '5T' for 5-minute
-    FORCE_RELOAD = False  # Set to True to ignore pickle and reload from CSV
+    FORCE_RELOAD = True  # Set to True to ignore pickle and reload from CSV
     
     # --- ARIMA Model ---
-    ARIMA_ORDER = (2, 1, 0) # Default order (p, d, q)
+    ARIMA_ORDER = (1, 0, 0) # Default order (p, d, q)
     FORECAST_PERIOD = '30D' # Period to forecast and validate against (e.g., '30D')
     
     # --- Analysis Options ---
-    RUN_FULL_ANALYSIS = False # Set to True to run stationarity tests and find best order
+    RUN_FULL_ANALYSIS = True  # Set to True to run stationarity tests and find best order
 
 # =============================================================================
 # 1. Data Loading and Preparation
 # =============================================================================
-def load_and_prepare_data(csv_path: str, pickle_path: str, resample_period: str, force_reload: bool = False) -> pd.DataFrame | None:
+def load_and_prepare_data(csv_path: str, pickle_path: str, resample_period: str, force_reload: bool = False) -> pd.DataFrame:
     """
     Loads forex data, resamples it to a specified frequency, and saves it to a pickle file.
     """
@@ -128,7 +128,7 @@ def generate_rolling_forecast(ts: pd.Series, order: tuple, forecast_period: str)
         conf = forecast.conf_int(alpha=0.05)
         
         predictions.append(yhat)
-        conf_intervals.append(conf.iloc[0])
+        conf_intervals.append(conf[0])
         history.append(test_data[t])
         
     predictions_series = pd.Series(predictions, index=test_data.index)
@@ -184,8 +184,8 @@ def main() -> None:
     arima_order = Config.ARIMA_ORDER
     if Config.RUN_FULL_ANALYSIS:
         perform_series_analysis(ts)
-        # best_order = find_best_arima_order(ts)
-        # if best_order: arima_order = best_order
+        best_order = find_best_arima_order(ts)
+        if best_order: arima_order = best_order
     
     # 3. Generate Forecast
     forecasts, conf_intervals = generate_rolling_forecast(
