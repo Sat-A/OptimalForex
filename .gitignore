@@ -1,7 +1,7 @@
 fx
 *.csv
 data
-experiments\runs
+experiments/runs/
 __pycache__
 *.pyc
-src\forex\__pycache__
+src/forex/__pycache__
