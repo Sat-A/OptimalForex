@@ -6,3 +6,4 @@ data
 __pycache__
 *.pyc
 src/forex/__pycache__
+closed/
