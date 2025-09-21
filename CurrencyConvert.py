@@ -13,9 +13,9 @@ CSV_FILE = "HISTDATA_COM_ASCII_GBPUSD_M12024\DAT_ASCII_GBPUSD_M1_2024.csv"
 AMOUNT_USD = 10000
 CONVERSION_COST_PERCENT = 0.2
 CONVERSION_COST_FIXED = 0
-START_DATE = "2024-06-01"
+START_DATE = "2024-12-01"
 # DEADLINE_DATE = "2024-12-01" # Your original deadline
-DEADLINE_DATE = "2024-08-31" # Using a shorter period for a focused example
+DEADLINE_DATE = "2024-12-31" # Using a shorter period for a focused example
 
 # =============================
 # Setup Functions
@@ -86,7 +86,7 @@ def run_historical_average_strategy(df, start_date, deadline_date):
 # =============================
 # Strategy 5: ARIMA Forecast (NEW)
 # =============================
-def run_arima_strategy(df, start_date, deadline_date, order=(5, 1, 0), min_history=30):
+def run_arima_strategy(df, start_date, deadline_date, order=(1, 0, 0), min_history=30):
     """
     Converts when the live rate is better than the next day's forecast.
     - order (p,d,q): ARIMA model parameters.
