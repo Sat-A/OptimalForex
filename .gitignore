@@ -1,3 +1,5 @@
-HISTDATA_COM_ASCII_GBPUSD_M12024
-*.csv
 fx
+*.csv
+data
+experiments/runs
+__pycache__
