@@ -12,9 +12,11 @@ windows:
   - { start: "2024-01-05", deadline: "2024-12-01" }
   - { start: "2024-06-05", deadline: "2024-08-02" }
   - { start: "2024-01-01", deadline: "2024-12-31" }
+  - { start: "2024-12-10", deadline: "2024-12-20" } 
+  - { start: "2024-02-15", deadline: "2024-03-20" } 
   - { start: "2024-10-15", deadline: "2024-10-20" }   # add as many windows as you like
 models:
-  forecaster: "random_walk"         # or "arima"
+  forecaster: "random_walk"
   params: { ewma_lambda: 0.94, drift_window: 60, samples: 2000, seed: 123 }
 strategies:
   - "perfect_foresight"
@@ -22,7 +24,7 @@ strategies:
   - "last_day"
   - "historical_average"
   - { name: "arima_trigger", params: { order: [1,0,0], min_history: 30 } }
-  - { name: "optimal_stopping", params: { min_history_days: 30, risk: "cvar", alpha: 0.10 } }
+  - { name: "optimal_stopping", params: { min_history_days: 30, risk: "cvar", alpha: 0.10 } } # risk can be "mean" or "cvar"
 output:
   dir: "experiments/runs"
   save_plots: true
