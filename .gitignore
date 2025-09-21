@@ -1,14 +1,8 @@
-# project outputs
-/data/
-# ignore every file inside runs; you can still keep a .gitkeep if you want the folder present
+fx
+*.csv
+data
 /experiments/runs/*
 !/experiments/runs/.gitkeep
-
-# csv anywhere
-*.csv
-
-# python junk
-__pycache__/
-*.py[cod]
-src/forex/__pycache__/
-.ipynb_checkpoints/
+__pycache__
+*.pyc
+src/forex/__pycache__
