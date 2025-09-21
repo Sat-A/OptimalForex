@@ -3,3 +3,5 @@ fx
 data
 experiments/runs
 __pycache__
+*.pyc
+src/forex/__pycache__
