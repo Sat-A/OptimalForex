@@ -36,8 +36,8 @@ def historical_average(series: pd.Series, start: str, deadline: str) -> Decision
     t = p_idx[-1]
     return Decision("historical_average", t, float(series.loc[t]), {"avg": float(series.loc[:t].mean())})
 
-def arima_trigger(series: pd.Series, start: str, deadline: str, order=(1,0,0), min_history: int = 30) -> Decision:
-    fore = ArimaPointForecaster(order=order)
+def arima_trigger(series: pd.Series, start: str, deadline: str, order=(1,0,0), min_history: int = 30, max_iter: int = 100, trend: str = "n") -> Decision:
+    fore = ArimaPointForecaster(order=order, max_iter=max_iter, trend=trend)
     p_idx = series.loc[start:deadline].index
     for t in p_idx:
         hist = series.loc[:t]

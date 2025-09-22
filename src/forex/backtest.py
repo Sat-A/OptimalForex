@@ -39,7 +39,9 @@ def _run_strategies_for_window(series, start, deadline, amount_usd, fees, foreca
         elif name == "arima_trigger":
             order = tuple(params.get("order", (1,0,0)))
             min_hist = int(params.get("min_history", 30))
-            d = S.arima_trigger(series, start, deadline, order=order, min_history=min_hist)
+            max_iter = int(params.get("max_iter", 100))
+            trend = params.get("trend", "n")
+            d = S.arima_trigger(series, start, deadline, order=order, min_history=min_hist, max_iter=max_iter, trend=trend)
         elif name == "optimal_stopping":
             risk = params.get("risk", "mean")
             alpha = float(params.get("alpha", 0.10))

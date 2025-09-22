@@ -52,14 +52,16 @@ class RandomWalkEWMA:
 
 class ArimaPointForecaster:
     """Point forecaster for baseline ARIMA trigger."""
-    def __init__(self, order=(1,0,0)):
+    def __init__(self, order=(1,0,0), max_iter=100, trend='n'):
         self.order = tuple(order)
+        self.max_iter = max_iter
+        self.trend = trend
 
     def forecast_next(self, y_hist: pd.Series) -> Optional[float]:
         if len(y_hist) < sum(self.order) + max(1, self.order[0]):
             return None
         try:
-            model = ARIMA(y_hist, order=self.order)
+            model = ARIMA(y_hist, order=self.order, maxiter=self.max_iter, trend=self.trend)
             fit = model.fit()
             return float(fit.forecast(steps=1).iloc[0])
         except Exception:
