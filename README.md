@@ -43,11 +43,11 @@ historical_average         20 7,835.88  147.95   7,892.14          99.1%        
 
 ## Graphs
 
-* Strategy comparison vs. perfect foresight
-  ![Placeholder graph 1](docs/images/strategy_comparison.png)
+* Sample Run 1:
+  ![Sample Run 1](experiments/sample_run/plots/2024-01-01_to_2024-12-31.png)
 
-* Distribution of regrets across windows
-  ![Placeholder graph 2](docs/images/regret_distribution.png)
+* Sample Run 2:
+  ![Sample Run 2](experiments/sample_run/plots/2024-01-01_to_2024-12-31.png)
 
 
 ## Repository Structure
@@ -68,5 +68,6 @@ OptimalForex/
 * Add more forecasting models (Prophet, LSTM).
 * Extend to multi-currency support.
 * Explore reinforcement learning approaches.
+
 
 
