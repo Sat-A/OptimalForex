@@ -47,7 +47,7 @@ historical_average         20 7,835.88  147.95   7,892.14          99.1%        
   ![Sample Run 1](experiments/sample_run/plots/2024-01-01_to_2024-12-31.png)
 
 * Sample Run 2:
-  ![Sample Run 2](experiments/sample_run/plots/2024-01-01_to_2024-12-31.png)
+  ![Sample Run 2](experiments/sample_run/plots/2024-12-01_to_2024-12-31.png)
 
 
 ## Repository Structure
@@ -67,6 +67,7 @@ OptimalForex/
 * Add more forecasting models (Prophet, LSTM).
 * Extend to multi-currency support.
 * Explore reinforcement learning approaches.
+
 
 
 
