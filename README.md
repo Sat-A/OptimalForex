@@ -61,13 +61,13 @@ OptimalForex/
 └── run.py               # Main entry point
 ```
 
----
 
 ## Next Steps
 
 * Add more forecasting models (Prophet, LSTM).
 * Extend to multi-currency support.
 * Explore reinforcement learning approaches.
+
 
 
 
